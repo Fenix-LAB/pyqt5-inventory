@@ -56,3 +56,8 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
+
+### Login Credentials
+- Username: admin
+- Password: admin
+(Only for testing purposes, please change in production)

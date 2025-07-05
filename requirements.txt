@@ -1,1 +1,4 @@
 PyQt5==5.15.11
+gspread==6.2.1
+oauth2client==4.1.3
+pandas==2.3.0

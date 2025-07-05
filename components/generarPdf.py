@@ -1,7 +1,7 @@
 import datetime
 from PyQt5.Qt import QDesktopServices, QUrl
 from PyQt5.Qt import QTextDocument, QPrinter
-from Modelo.persona import Persona
+from model.persona import Persona
 
 class GenerarPDF():
 

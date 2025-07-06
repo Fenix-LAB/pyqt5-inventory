@@ -40,6 +40,7 @@ class ExcelSetup:
         }
         
         # En un entorno real, esto se cargaría desde un archivo de credenciales
+        print(f"Buscando archivo de credenciales en {os.path.abspath(self.credentials_file)}")
         if not os.path.exists(self.credentials_file):
             with open(self.credentials_file, 'w') as f:
                 json.dump(credentials_dict, f)
@@ -91,7 +92,7 @@ class ExcelSetup:
                 sql_content = f.read()
                 
             # Buscar todas las definiciones de tablas
-            table_pattern = r"CREATE TABLE IF NOT EXISTS `db_perfumeria`\.`(.*?)`\s*\((.*?)(?:\n\)[^;]*;)"
+            table_pattern = r"CREATE TABLE IF NOT EXISTS `db_perfumeria`\.`(\w+)`\s*\(([\s\S]*?)(?:PRIMARY KEY|CONSTRAINT|ENGINE)"
             table_matches = re.findall(table_pattern, sql_content, re.DOTALL)
             
             for table_name, columns_text in table_matches:

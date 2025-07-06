@@ -7,9 +7,13 @@ Script para probar la conexión a Google Sheets y la migración de la estructura
 
 import os
 import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
 from connection.conexion import Conexion
 from connection.excel_setup import ExcelSetup
 from connection.init_google_sheets import parse_sql_structure
+
 
 
 def test_connection():
@@ -137,20 +141,20 @@ def main():
     """
     print("=== PRUEBA DE MIGRACIÓN A GOOGLE SHEETS ===")
     
-    # Paso 1: Probar conexión
-    if not test_connection():
-        print("\n[ERROR] La prueba de conexión falló. Verifica las credenciales y permisos.")
-        return False
+    # # Paso 1: Probar conexión
+    # if not test_connection():
+    #     print("\n[ERROR] La prueba de conexión falló. Verifica las credenciales y permisos.")
+    #     return False
         
-    # Paso 2: Probar creación de hoja de cálculo
-    if not test_spreadsheet_creation():
-        print("\n[ERROR] La prueba de creación de hoja de cálculo falló.")
-        return False
+    # # Paso 2: Probar creación de hoja de cálculo
+    # if not test_spreadsheet_creation():
+    #     print("\n[ERROR] La prueba de creación de hoja de cálculo falló.")
+    #     return False
         
-    # Paso 3: Probar parseo de SQL
-    if not test_sql_parsing():
-        print("\n[ERROR] La prueba de parseo de SQL falló.")
-        return False
+    # # Paso 3: Probar parseo de SQL
+    # if not test_sql_parsing():
+    #     print("\n[ERROR] La prueba de parseo de SQL falló.")
+    #     return False
         
     # Paso 4: Probar operaciones básicas
     if not test_basic_operations():

@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 import re
 import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 def parse_sql_structure(sql_file):
     """
@@ -12,18 +15,24 @@ def parse_sql_structure(sql_file):
     try:
         with open(sql_file, 'r') as f:
             sql_content = f.read()
+
+        print("Analizando el archivo SQL para extraer la estructura de tablas...")
             
         # Buscar todas las definiciones de tablas
-        table_pattern = r"CREATE TABLE IF NOT EXISTS `db_perfumeria`\.`(.*?)`\s*\((.*?)(?:\n\)[^;]*;)"
+        table_pattern = r"CREATE TABLE IF NOT EXISTS `db_perfumeria`\.`(\w+)`\s*\(([\s\S]*?)(?:PRIMARY KEY|CONSTRAINT|ENGINE)"
         table_matches = re.findall(table_pattern, sql_content, re.DOTALL)
+
+        print(f"Se encontraron {len(table_matches)} tablas en el archivo SQL.")
         
         for table_name, columns_text in table_matches:
+            print(f"Procesando tabla: {table_name}")
             # Extraer las columnas y sus tipos
             column_pattern = r"`([^`]*)`\s+([^,\n]*)"
             column_matches = re.findall(column_pattern, columns_text)
             
             columns = []
             for col_name, col_type in column_matches:
+                print(f"  Columna: {col_name} - Tipo: {col_type.strip()}")
                 # Ignorar líneas que no son definiciones de columnas
                 if not col_name.startswith('CONSTRAINT') and not col_name.startswith('PRIMARY KEY') and not col_name.startswith('INDEX'):
                     columns.append({
@@ -32,9 +41,10 @@ def parse_sql_structure(sql_file):
                     })
             
             tables[table_name] = columns
-            
+
+        print("Estructura de tablas extraída correctamente.")
         return tables
-            
+
     except Exception as e:
         print(f"Error al analizar el archivo SQL: {e}")
         return {}
@@ -43,7 +53,7 @@ def main():
     """
     Función principal para inicializar las hojas de cálculo
     """
-    from connection.conexion import Conexion
+    # from connection.conexion import Conexions
     from connection.excel_setup import ExcelSetup
     
     # Ruta al archivo SQL
@@ -52,6 +62,8 @@ def main():
     if not os.path.exists(sql_file):
         print(f"El archivo SQL no existe en la ruta: {sql_file}")
         return False
+    
+    print("Archivo SQL encontrado, procediendo a analizar la estructura de tablas...")
         
     # Parsear la estructura de tablas
     tables = parse_sql_structure(sql_file)

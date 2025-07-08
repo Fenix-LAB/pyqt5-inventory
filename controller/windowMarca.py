@@ -9,12 +9,16 @@ from components.tableModel import MyTableModel
 from PyQt5.QtWidgets import QTableView, QAbstractItemView, QWidget
 # from Modelo.telefono import Telefono
 from PyQt5.QtWidgets import QMessageBox, QDialog
+import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
 
 class windowMarca():
 
     def __init__(self):
 
-        self.winMarca = uic.loadUi('../Vista/abmMarca.ui')
+        # self.winMarca = uic.loadUi('../views/abmMarca.ui')
+        ui_path = os.path.join(current_dir, '..', 'views', 'abmMarca.ui')
+        self.winMarca = uic.loadUi(ui_path)
 
         #Configurando botones
         # self.marca = Marca()

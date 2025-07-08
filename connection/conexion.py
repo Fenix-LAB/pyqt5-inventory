@@ -25,6 +25,47 @@ class Conexion(object):
         self.current_headers = None
         self.setup_credentials()
 
+    def get_spreadsheet_url(self):
+        """
+        Devuelve la URL de la hoja de cálculo actual.
+        """
+        try:
+            # Si no hay una conexión activa, intentamos conectar primero
+            if not self.spreadsheet:
+                self.conectar()
+                
+            # Si después de conectar aún no tenemos spreadsheet, algo falló
+            if not self.spreadsheet:
+                print("No se pudo obtener la hoja de cálculo")
+                return None
+                
+            # En Google Sheets, la URL de la hoja se construye con el ID
+            spreadsheet_id = self.spreadsheet.id
+            url = f"https://docs.google.com/spreadsheets/d/{spreadsheet_id}"
+            return url
+        except Exception as e:
+            print(f"Error al obtener URL de la hoja de cálculo: {e}")
+            return None
+        
+    def share_spreadsheet(self, email):
+        """
+        Comparte la hoja de cálculo con el email especificado
+        """
+        try:
+            if not self.spreadsheet:
+                self.conectar()
+                
+            if not self.spreadsheet:
+                print("No se pudo obtener la hoja de cálculo")
+                return False
+                
+            self.spreadsheet.share(email, perm_type='user', role='writer')
+            print(f"Hoja compartida con {email}")
+            return True
+        except Exception as e:
+            print(f"Error al compartir la hoja: {e}")
+            return False
+
     def setup_credentials(self, email=None, password=None):
         """
         Configura las credenciales para acceder a Google Sheets.

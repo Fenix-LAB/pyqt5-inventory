@@ -133,6 +133,19 @@ def test_basic_operations():
         
     conexion.cerrarConexion()
     return True
+
+def get_spreadsheet_url():
+    """
+    Obtiene la URL de la hoja de cálculo creada
+    """
+    conexion = Conexion()
+    spreadsheet_url = conexion.get_spreadsheet_url()
+    
+    if not spreadsheet_url:
+        print("Error: No se pudo obtener la URL de la hoja de cálculo")
+        return None
+        
+    return spreadsheet_url
     
 
 def main():
@@ -160,6 +173,13 @@ def main():
     if not test_basic_operations():
         print("\n[ERROR] La prueba de operaciones básicas falló.")
         return False
+    
+    # Paso 5: Obtener URL de la hoja de cálculo
+    spreadsheet_url = get_spreadsheet_url()
+    if not spreadsheet_url:
+        print("\n[ERROR] No se pudo obtener la URL de la hoja de cálculo.")
+        return False
+    print(f"\n¡Hoja de cálculo creada correctamente! URL: {spreadsheet_url}")
         
     print("\n=== ¡TODAS LAS PRUEBAS COMPLETADAS EXITOSAMENTE! ===")
     print("La migración de MySQL a Google Sheets parece estar funcionando correctamente.")

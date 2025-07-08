@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# from Modelo.cliente import Cliente
+from model.cliente import Cliente
 from components.tableModel import MyTableModel
 from PyQt5.QtWidgets import QTableView, QAbstractItemView
-# from Conexion.conexionCliente import conexionCliente
-# from Modelo.direccion import Direccion
-# from Conexion.conexionTelefono import conexionTelefono
-# from Modelo.telefono import Telefono
+from connection.conexionCliente import conexionCliente
+from model.direccion import Direccion
+from connection.conexionTelefono import conexionTelefono
+from model.telefono import Telefono
 from PyQt5.QtWidgets import QMessageBox, QDialog
 from PyQt5.QtWidgets import QTableWidgetItem
 
@@ -14,14 +14,14 @@ class PestaniaCliente():
 
     def __init__(self, winPrincipal):
         self.winPrincipal = winPrincipal
-        # self.cliente = Cliente()
-        # self.conexionCliente = conexionCliente()
-        # self.conexionTelefono = conexionTelefono()
+        self.cliente = Cliente()
+        self.conexionCliente = conexionCliente()
+        self.conexionTelefono = conexionTelefono()
 
         self.listTelefonosInit = []
 
         self.estado = ""
-        # self.direccion = Direccion()
+        self.direccion = Direccion()
 
         self.configInit()
 
@@ -411,8 +411,8 @@ class PestaniaCliente():
 
     def onClickRestarTelefono(self):
         listTabTel = []
-        #listTabTel = list(self.winPrincipal.tvTelefonos_c.model().mylist).copy()
-        #tipoTel = str(self.getTipoTelefono())
+        listTabTel = list(self.winPrincipal.tvTelefonos_c.model().mylist).copy()
+        tipoTel = str(self.getTipoTelefono())
         listTelefonosNew = []
 
         listTabTel = list(self.winPrincipal.tvTelefonos_c.model().mylist).copy()

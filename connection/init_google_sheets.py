@@ -86,6 +86,12 @@ def main():
             print("Creando hojas basadas en la estructura SQL...")
             if setup.create_sheets_from_sql(sql_file):
                 print("¡Todas las hojas se han creado correctamente!")
+
+                # Obtener y mostrar la URL de la hoja de cálculo
+                # url = setup.get_spreadsheet_url()
+                # print("\n============================================================")
+                # print(f"ACCESO A LA HOJA DE CÁLCULO: {url}")
+                # print("============================================================\n")
                 
                 # Mostrar resumen de las tablas creadas
                 print("\nResumen de la estructura de la base de datos:")

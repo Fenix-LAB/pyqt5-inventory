@@ -38,6 +38,12 @@ Para usar Google Sheets, necesitas credenciales de Google API:
 4. Crea una cuenta de servicio y descarga el archivo de credenciales JSON
 5. Renombra el archivo a `credentials.json` y colócalo en la carpeta `connection/`
 
+Para compartir el documento de Google Sheets con la cuenta de servicio, sigue estos pasos:
+1. Abre el documento de Google Sheets que se creará
+2. Haz clic en "Compartir"
+3. Ingresa el correo electrónico de la cuenta de servicio (encontrado en `credentials.json`)
+4. Asegúrate de darle permisos de edición
+
 ### 2. Inicializar las hojas de cálculo
 
 Para crear la estructura de hojas basada en la base de datos original:

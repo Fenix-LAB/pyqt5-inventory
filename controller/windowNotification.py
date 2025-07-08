@@ -7,12 +7,16 @@ from components.tableModel import MyTableModel
 from PyQt5.QtWidgets import QTableView, QAbstractItemView, QWidget
 
 from PyQt5.QtWidgets import QMessageBox, QDialog
+import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
 
 class WindowNotification():
 
     def __init__(self):
 
-        self.winNot = uic.loadUi('../Vista/windowListNotify.ui')
+        # self.winNot = uic.loadUi('../views/windowListNotify.ui')
+        ui_path = os.path.join(current_dir, '..', 'views', 'windowListNotify.ui')
+        self.winNot = uic.loadUi(ui_path)
 
         # self.producto = Producto()
 

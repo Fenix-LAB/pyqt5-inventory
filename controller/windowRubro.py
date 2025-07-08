@@ -9,13 +9,16 @@ from PyQt5.QtWidgets import QTableView, QAbstractItemView, QWidget
 # from Conexion.conexionRubro import conexionRubro
 # from Modelo.telefono import Telefono
 from PyQt5.QtWidgets import QMessageBox, QDialog
+import os
 
 class windowRubro():
 
     def __init__(self):
 
         #Definiendo variables
-        self.winRubro = uic.loadUi('../Vista/abmRubro.ui')
+        # self.winRubro = uic.loadUi('../views/abmRubro.ui')
+        ui_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'views', 'abmRubro.ui')
+        self.winRubro = uic.loadUi(ui_path)
         # self.rubro = Rubro()
         # self.conexionRubro = conexionRubro()
         self.contAttr = 0

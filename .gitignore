@@ -11,6 +11,7 @@ __pycache__/
 
 # Connfig JSON
 config.json
+credentials.json
 
 # Postgres data
 pgdata/

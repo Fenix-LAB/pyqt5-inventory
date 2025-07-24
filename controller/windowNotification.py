@@ -1,8 +1,8 @@
 import sys
 
 from PyQt5 import uic
-# from Modelo.producto import Producto
-# from Conexion.conexionGeneral import ConexionGenerales
+from model.producto import Producto
+from connection.conexionGeneral import ConexionGenerales
 from components.tableModel import MyTableModel
 from PyQt5.QtWidgets import QTableView, QAbstractItemView, QWidget
 
@@ -18,9 +18,9 @@ class WindowNotification():
         ui_path = os.path.join(current_dir, '..', 'views', 'windowListNotify.ui')
         self.winNot = uic.loadUi(ui_path)
 
-        # self.producto = Producto()
+        self.producto = Producto()
 
-        # self.conexionGeneral = ConexionGenerales()
+        self.conexionGeneral = ConexionGenerales()
 
         self.cargarTabla()
 
@@ -61,7 +61,7 @@ class WindowNotification():
 
         self.productoSelected = selected.row()
 
-        # self.producto = Producto()
+        self.producto = Producto()
         self.producto.setIdProducto(int(productoSelected[0]))
         self.producto.setNombre(str(productoSelected[1]))
         self.producto.setCantidad(int(productoSelected[2]))

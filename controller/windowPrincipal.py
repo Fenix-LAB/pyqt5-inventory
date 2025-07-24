@@ -9,6 +9,8 @@ from controller.pProducto import PestaniaProducto
 from controller.pTransacciones import PestaniaTransacciones
 from controller.pPagos import PestaniaPagos
 from controller.windowNotification import WindowNotification
+from connection.conexionGeneral import ConexionGenerales
+
 
 class Principal():
 
@@ -35,30 +37,28 @@ class Principal():
 
     def setInterfaceUsuario(self):
 
-        # if self.usuario.getTipoUsuario() == 'ADM':
-        #     self.winPrincipal.twMenu.setTabEnabled(5, True)
-        #     self.winPrincipal.twMenu.setTabEnabled(6, True)
-        # else:
-        #     self.winPrincipal.twMenu.setTabEnabled(5, False)
-        #     self.winPrincipal.twMenu.setTabEnabled(6, False)
-        pass
+        if self.usuario.getTipoUsuario() == 'ADM':
+            self.winPrincipal.twMenu.setTabEnabled(5, True)
+            self.winPrincipal.twMenu.setTabEnabled(6, True)
+        else:
+            self.winPrincipal.twMenu.setTabEnabled(5, False)
+            self.winPrincipal.twMenu.setTabEnabled(6, False)
 
 
     def notificationStock(self):
-        # conexionGenerales = ConexionGenerales()
+        conexionGenerales = ConexionGenerales()
 
-        # listProdSinStock = conexionGenerales.selectProductoStock()
-        # self.winPrincipal.btnNotification.setEnabled(False)
-        # if len(listProdSinStock) > 0:
-        #     self.winPrincipal.btnNotification.setText(str(len(listProdSinStock)))
-        #     self.winPrincipal.btnNotification.setStyleSheet("background-color: rgb(255, 229, 230);")
-        #     self.winPrincipal.btnNotification.clicked.connect(self.openNotification)
-        #     if self.usuario.getTipoUsuario() == 'ADM':
-        #         self.winPrincipal.btnNotification.setEnabled(True)
-        # else:
-        #     self.winPrincipal.btnNotification.setText("0")
-        #     self.winPrincipal.btnNotification.setStyleSheet("background-color: rgb(255, 255, 255);")
-        pass
+        listProdSinStock = conexionGenerales.selectProductoStock()
+        self.winPrincipal.btnNotification.setEnabled(False)
+        if len(listProdSinStock) > 0:
+            self.winPrincipal.btnNotification.setText(str(len(listProdSinStock)))
+            self.winPrincipal.btnNotification.setStyleSheet("background-color: rgb(255, 229, 230);")
+            self.winPrincipal.btnNotification.clicked.connect(self.openNotification)
+            if self.usuario.getTipoUsuario() == 'ADM':
+                self.winPrincipal.btnNotification.setEnabled(True)
+        else:
+            self.winPrincipal.btnNotification.setText("0")
+            self.winPrincipal.btnNotification.setStyleSheet("background-color: rgb(255, 255, 255);")
 
 
     def openNotification(self):

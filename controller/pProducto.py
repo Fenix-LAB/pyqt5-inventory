@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 from components.tableModel import MyTableModel
 from PyQt5.QtWidgets import QTableView, QAbstractItemView, QCompleter, QLineEdit
-# from Conexion.conexionProducto import conexionProducto
+from connection.conexionProducto import conexionProducto
 from controller.windowMarca import windowMarca
 from controller.windowRubro import windowRubro
-# from Modelo.proveedor import Proveedor
-# from Modelo.producto import Producto
-# from Modelo.rubro import Rubro
-# from Modelo.marca import Marca
+from model.proveedor import Proveedor
+from model.producto import Producto
+from model.rubro import Rubro
+from model.marca import Marca
 from PyQt5 import QtCore
 from PyQt5.QtCore import QAbstractItemModel
 from PyQt5.QtWidgets import QMessageBox, QDialog
@@ -18,12 +18,12 @@ class PestaniaProducto():
 
     def __init__(self, winPrincipal):
         self.winPrincipal = winPrincipal
-        # self.producto = Producto()
-        # self.proveedor = Proveedor()
-        # self.marca = Marca()
-        # self.rubro = Rubro()
-        # self.estado = ""
-        # self.conexionProducto = conexionProducto()
+        self.producto = Producto()
+        self.proveedor = Proveedor()
+        self.marca = Marca()
+        self.rubro = Rubro()
+        self.estado = ""
+        self.conexionProducto = conexionProducto()
 
         self.completerRubro = QCompleter()
         self.completerMarca = QCompleter()
@@ -177,10 +177,10 @@ class PestaniaProducto():
 
         productoList = selected.model().mylist
         productoSelected = productoList[selected.row()]
-        # self.producto = Producto()
-        # self.rubro = Rubro()
-        # self.proveedor = Proveedor()
-        # self.marca = Marca()
+        self.producto = Producto()
+        self.rubro = Rubro()
+        self.proveedor = Proveedor()
+        self.marca = Marca()
 
         self.producto.setIdProducto(productoSelected[0])
         self.producto.setNombre(productoSelected[1])
@@ -328,28 +328,27 @@ class PestaniaProducto():
         return mensaje
 
     def setCompleterMarca(self):
-        # listMarcas = self.conexionProducto.listMarcas()
-        # self.completerMarca = QCompleter(listMarcas)
+        listMarcas = self.conexionProducto.listMarcas()
+        self.completerMarca = QCompleter(listMarcas)
 
-        # self.completerMarca.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
-        # self.winPrincipal.txtMarca_p.setCompleter(self.completerMarca)
-        pass
+        self.completerMarca.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
+        self.winPrincipal.txtMarca_p.setCompleter(self.completerMarca)
+
 
     def setCompleterRubro(self):
-        # listRubros = self.conexionProducto.listRubro()
-        # self.completerRubro = QCompleter(listRubros)
+        listRubros = self.conexionProducto.listRubro()
+        self.completerRubro = QCompleter(listRubros)
 
-        # self.completerRubro.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
-        # self.winPrincipal.txtRubro_p.setCompleter(self.completerRubro)
-        pass
+        self.completerRubro.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
+        self.winPrincipal.txtRubro_p.setCompleter(self.completerRubro)
+        
 
 
     def setCompleterProveedor(self):
-        # listProveedores = self.conexionProducto.listProveedor()
-        # self.completerProveedor = QCompleter(listProveedores)
+        listProveedores = self.conexionProducto.listProveedor()
+        self.completerProveedor = QCompleter(listProveedores)
 
-        # self.completerProveedor.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
-        # self.winPrincipal.txtProveedor_p.setCompleter(self.completerProveedor)
-        pass
+        self.completerProveedor.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
+        self.winPrincipal.txtProveedor_p.setCompleter(self.completerProveedor)
 
 

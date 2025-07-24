@@ -185,13 +185,13 @@ class PestaniaCliente():
 
             clienteList = selected.model().mylist
             clienteSelected = clienteList[selected.row()]
-            # self.cliente = Cliente()
-            # self.direccion = Direccion()
+            self.cliente = Cliente()
+            self.direccion = Direccion()
             self.cliente.setIdCliente(int(clienteSelected[0]))
             self.cliente.setApellido(clienteSelected[1])
             self.cliente.setNombre(clienteSelected[2])
             self.cliente.setEmail(clienteSelected[3])
-            # self.direccion = Direccion()
+            self.direccion = Direccion()
             self.direccion.setDireccion(clienteSelected[4])
 
             if clienteSelected[5] != None:
@@ -360,9 +360,58 @@ class PestaniaCliente():
 
 
     def updateTelefono(self):
+        listTelefono = []
+        if self.winPrincipal.tvTelefonos_c.model() != None and \
+                        len(self.winPrincipal.tvTelefonos_c.model().mylist) > 0:
+            listTelefono = list(self.winPrincipal.tvTelefonos_c.model().mylist).copy()
 
-        # 
-        pass
+            estado = ''
+            telNew = Telefono()
+            if len(listTelefono) > 0:
+                if len(self.listTelefonosInit) > 0:
+
+                    listTelInit = list(self.listTelefonosInit)
+                    parche = (listTelefono[0][0], listTelefono[0][1], str(listTelefono[0][2]))
+                    listTelefono[0] = parche
+                    #Recorre la lista de telefono inicial
+                    for telInit in listTelInit:
+                        #recorre la lista de telefonos nueva
+                        for tel in listTelefono:
+                            telNew.setIdPersona(self.cliente.getIdPersona())
+                            telNew.setIdTelefono(tel[0])
+                            telNew.setTipo(tel[1])
+                            if tel[2] == "":
+                                estado = 'DEL'
+                                break
+                            else:
+                                telNew.setTelefono(tel[2])
+
+                            if tel[0] == 0:
+                                estado = 'INS'
+                                break
+
+                            if telInit[0] == tel[0]:
+                                if telInit[1] != tel[1] or telInit[2] != tel[2]:
+                                    estado = 'UPD'
+                                    break
+
+                        if estado == 'UPD':
+                            self.conexionTelefono.modificarTelefono(telNew)
+                        elif estado == "INS":
+                            self.conexionTelefono.insertarTelefono(telNew)
+                        elif estado == 'DEL':
+                            self.conexionTelefono.borrarTelefono(telNew)
+                #Si la lista de telefono inicial es cero
+                else:
+                    #recorre la lista de telefonos nueva para agregarlos a todos
+                    for telN in listTelefono:
+                        if telN[2] != '':
+                            telNew = Telefono()
+                            telNew.setIdPersona(self.cliente.getIdPersona())
+                            telNew.setIdTelefono(telN[0])
+                            telNew.setTipo(telN[1])
+                            telNew.setTelefono(telN[2])
+                            self.conexionTelefono.insertarTelefono(telNew)
 
 
     def insertTelefono(self):

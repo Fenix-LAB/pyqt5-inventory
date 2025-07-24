@@ -1,7 +1,7 @@
-# from Conexion.conexionTransacciones import ConexionTransacciones
-# from Modelo.cliente import Cliente
-# from Modelo.proveedor import Proveedor
-# from Modelo.producto import Producto
+from connection.conexionTransacciones import ConexionTransacciones
+from model.cliente import Cliente
+from model.proveedor import Proveedor
+from model.producto import Producto
 from PyQt5.QtWidgets import QRadioButton
 from components.tableModel import MyTableModel
 from PyQt5.QtWidgets import QAbstractItemView
@@ -16,11 +16,11 @@ class PestaniaTransacciones():
 
 
     def __init__(self, winPrincipal):
-        # self.conexionTransacciones = ConexionTransacciones()
+        self.conexionTransacciones = ConexionTransacciones()
         self.winPrincipal = winPrincipal
-        # self.cliente = Cliente()
-        # self.proveedor = Proveedor()
-        # self.producto = Producto()
+        self.cliente = Cliente()
+        self.proveedor = Proveedor()
+        self.producto = Producto()
         self.tipoTransaccion = "VENTA"
         self.configInit()
 
@@ -374,14 +374,14 @@ class PestaniaTransacciones():
         self.personaSelectedRow = selected.row()
 
         if(self.tipoTransaccion == "VENTA"):
-            # self.cliente = Cliente()
+            self.cliente = Cliente()
             self.cliente.setIdCliente(int(personaSelected[0]))
             self.cliente.setApellido(str(personaSelected[1]))
             self.cliente.setNombre(str(personaSelected[2]))
             self.cliente.setEmail(str(personaSelected[3]))
 
         elif(self.tipoTransaccion == "COMPRA"):
-            # self.proveedor = Proveedor()
+            self.proveedor = Proveedor()
             self.proveedor.setIdProveedor(int(personaSelected[0]))
             self.proveedor.setDescripcion(str(personaSelected[1]))
             self.proveedor.setNombre(str(personaSelected[2]))
@@ -434,7 +434,7 @@ class PestaniaTransacciones():
 
         self.productoSelected = selected.row()
 
-        # self.producto = Producto()
+        self.producto = Producto()
         self.producto.setIdProducto(int(productoSelected[0]))
         self.producto.setNombre(str(productoSelected[1]))
         self.producto.setDescripcion(str(productoSelected[2]))

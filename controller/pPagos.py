@@ -1,7 +1,7 @@
-# from Conexion.conexionPagos import ConexionPagos
-# from Modelo.cliente import Cliente
-# from Modelo.proveedor import Proveedor
-# from Modelo.producto import Producto
+from connection.conexionPagos import ConexionPagos
+from model.cliente import Cliente
+from model.proveedor import Proveedor
+from model.producto import Producto
 from PyQt5.QtWidgets import QLineEdit
 from components.tableModel import MyTableModel
 from PyQt5.QtWidgets import QAbstractItemView
@@ -16,10 +16,10 @@ class PestaniaPagos():
 
 
     def __init__(self, winPrincipal):
-        # self.conexionPagos = ConexionPagos()
+        self.conexionPagos = ConexionPagos()
         self.winPrincipal = winPrincipal
-        # self.cliente = Cliente()
-        # self.proveedor = Proveedor()
+        self.cliente = Cliente()
+        self.proveedor = Proveedor()
         self.state = 'COBRANZA'
 
         self.configInit()
@@ -74,14 +74,14 @@ class PestaniaPagos():
         personaSelected = tuple(listPersonas[selected.row()])
 
         if self.state == "COBRANZA":
-            # self.cliente = Cliente()
+            self.cliente = Cliente()
             self.cliente.setIdCliente(int(personaSelected[0]))
             self.cliente.setApellido(str(personaSelected[1]))
             self.cliente.setNombre(str(personaSelected[2]))
             self.cliente.setEmail(str(personaSelected[3]))
 
         elif self.state == "PAGO":
-            # self.proveedor = Proveedor()
+            self.proveedor = Proveedor()
             self.proveedor.setIdProveedor(int(personaSelected[0]))
             self.proveedor.setDescripcion(str(personaSelected[1]))
             self.proveedor.setNombre(str(personaSelected[2]))

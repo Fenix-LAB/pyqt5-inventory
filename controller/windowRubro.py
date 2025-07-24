@@ -3,11 +3,11 @@
 import sys
 
 from PyQt5 import uic
-# from Modelo.rubro import Rubro
+from model.rubro import Rubro
 from components.tableModel import MyTableModel
 from PyQt5.QtWidgets import QTableView, QAbstractItemView, QWidget
-# from Conexion.conexionRubro import conexionRubro
-# from Modelo.telefono import Telefono
+from connection.conexionRubro import conexionRubro
+from model.telefono import Telefono
 from PyQt5.QtWidgets import QMessageBox, QDialog
 import os
 
@@ -19,8 +19,8 @@ class windowRubro():
         # self.winRubro = uic.loadUi('../views/abmRubro.ui')
         ui_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'views', 'abmRubro.ui')
         self.winRubro = uic.loadUi(ui_path)
-        # self.rubro = Rubro()
-        # self.conexionRubro = conexionRubro()
+        self.rubro = Rubro()
+        self.conexionRubro = conexionRubro()
         self.contAttr = 0
         self.estado = "" #Variable donde guardo el estado, para saber que accion hace el boton guardar.
         #Configurando botones
@@ -101,7 +101,7 @@ class windowRubro():
         rubroList = selected.model().mylist
         rubroSelected = rubroList[selected.row()]
 
-        # self.rubro = Rubro()
+        self.rubro = Rubro()
         self.rubro.setIdRubro(int(rubroSelected[0]))
         self.rubro.setRubro(str(rubroSelected[1]))
 

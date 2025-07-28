@@ -52,7 +52,7 @@ Para crear la estructura de hojas basada en la base de datos original:
 python connection/init_google_sheets.py
 ```
 
-Este script creará un documento de Google Sheets llamado "inventario_perfumeria" con una hoja para cada tabla.
+Este script creará un documento de Google Sheets llamado "inventario" con una hoja para cada tabla.
 
 ## Cambios realizados
 

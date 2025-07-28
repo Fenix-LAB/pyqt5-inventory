@@ -293,7 +293,7 @@ class PestaniaPagos():
                      <table width="600">
                         <tr width="600" color="#000000">
                             <td width="80%">
-                               Perfumeria La que vende perfumes <br>
+                               Inventario General <br>
                                LABOULAYE, CORDOBA, ARGENTINA <br>
                                TEL: 0351-111111  <br>
                                MAIL: MAIL@MAIL.COM  <br>

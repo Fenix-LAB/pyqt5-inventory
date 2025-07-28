@@ -14,7 +14,7 @@ class Conexion(object):
     '''
 
     def __init__(self):
-        self.excel_file = 'inventario_perfumeria.xlsx'
+        self.excel_file = 'inventario.xlsx'
         self.workbook = None
         self.current_worksheet = None
         self.cursor = None
@@ -74,9 +74,9 @@ class Conexion(object):
         
         # Datos de ejemplo para categorías
         sample_categories = [
-            [1, "Perfumes", "Fragancias para hombre y mujer"],
-            [2, "Cremas", "Productos para el cuidado de la piel"],
-            [3, "Maquillaje", "Productos de belleza y cosmética"]
+            [1, "Electrónicos", "Dispositivos y equipos electrónicos"],
+            [2, "Oficina", "Artículos y suministros de oficina"],
+            [3, "Herramientas", "Herramientas y equipos de trabajo"]
         ]
         for row in sample_categories:
             categorias_sheet.append(row)

@@ -19,7 +19,7 @@ def parse_sql_structure(sql_file):
         print("Analizando el archivo SQL para extraer la estructura de tablas...")
             
         # Buscar todas las definiciones de tablas
-        table_pattern = r"CREATE TABLE IF NOT EXISTS `db_perfumeria`\.`(\w+)`\s*\(([\s\S]*?)(?:PRIMARY KEY|CONSTRAINT|ENGINE)"
+        table_pattern = r"CREATE TABLE IF NOT EXISTS `db_inventario`\.`(\w+)`\s*\(([\s\S]*?)(?:PRIMARY KEY|CONSTRAINT|ENGINE)"
         table_matches = re.findall(table_pattern, sql_content, re.DOTALL)
 
         print(f"Se encontraron {len(table_matches)} tablas en el archivo SQL.")

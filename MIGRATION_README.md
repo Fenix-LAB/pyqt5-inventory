@@ -34,14 +34,14 @@ La clase `Conexion` en `/connection/conexion.py` fue completamente reescrita:
 
 ### 4. Nuevas Características
 
-🆕 **Archivo local**: `inventario_perfumeria.xlsx` se crea automáticamente
+🆕 **Archivo local**: `inventario.xlsx` se crea automáticamente
 🆕 **Múltiples hojas**: Soporte para todas las tablas del sistema
 🆕 **Cache DataFrame**: Mejor rendimiento con pandas
 🆕 **Backup automático**: Se guarda automáticamente después de cada operación
 
 ## Estructura del Archivo Excel
 
-El archivo `inventario_perfumeria.xlsx` contiene las siguientes hojas:
+El archivo `inventario.xlsx` contiene las siguientes hojas:
 
 - **productos**: id, nombre, marca, categoria, precio, stock, descripcion
 - **categorias**: id, nombre, descripcion  
@@ -115,7 +115,7 @@ Si necesitas una migración automática desde Google Sheets, puedes:
 pip install openpyxl
 ```
 
-### Error: "No such file or directory: inventario_perfumeria.xlsx"
+### Error: "No such file or directory: inventario.xlsx"
 El archivo se crea automáticamente. Si hay problemas, ejecuta:
 ```bash
 python migrate_to_excel.py

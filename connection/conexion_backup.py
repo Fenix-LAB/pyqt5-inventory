@@ -15,7 +15,7 @@ class Conexion(object):
 
     def __init__(self):
         self.credentials_file = 'credentials.json'
-        self.spreadsheet_name = 'inventario_perfumeria'
+        self.spreadsheet_name = 'inventario'
         self.client = None
         self.spreadsheet = None
         self.worksheet = None

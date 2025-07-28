@@ -29,7 +29,7 @@ def migrate_to_excel():
         print("Creando archivo Excel desde cero...")
     
     # Crear el nuevo archivo Excel
-    excel_file = 'inventario_perfumeria.xlsx'
+    excel_file = 'inventario.xlsx'
     
     if os.path.exists(excel_file):
         print(f"El archivo {excel_file} ya existe.")
@@ -68,9 +68,9 @@ def migrate_to_excel():
     # Agregar algunos datos de ejemplo en categorías
     categorias_sheet = workbook["categorias"]
     sample_categories = [
-        [1, "Perfumes", "Fragancias para hombre y mujer"],
-        [2, "Cremas", "Productos para el cuidado de la piel"],
-        [3, "Maquillaje", "Productos de belleza y cosmética"]
+        [1, "Electrónicos", "Dispositivos y equipos electrónicos"],
+        [2, "Oficina", "Artículos y suministros de oficina"],
+        [3, "Herramientas", "Herramientas y equipos de trabajo"]
     ]
     for row in sample_categories:
         categorias_sheet.append(row)
@@ -103,7 +103,7 @@ import pandas as pd
 import os
 from openpyxl import load_workbook
 
-def convert_csv_to_excel_sheet(csv_file, sheet_name, excel_file='inventario_perfumeria.xlsx'):
+def convert_csv_to_excel_sheet(csv_file, sheet_name, excel_file='inventario.xlsx'):
     """
     Convierte un archivo CSV a una hoja del archivo Excel
     """

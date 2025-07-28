@@ -14,7 +14,7 @@ class ExcelSetup:
     """
     def __init__(self):
         self.credentials_file = 'credentials.json'
-        self.spreadsheet_name = 'inventario_perfumeria'
+        self.spreadsheet_name = 'inventario'
         self.credentials = None
         self.client = None
         self.spreadsheet = None
@@ -92,7 +92,7 @@ class ExcelSetup:
                 sql_content = f.read()
                 
             # Buscar todas las definiciones de tablas
-            table_pattern = r"CREATE TABLE IF NOT EXISTS `db_perfumeria`\.`(\w+)`\s*\(([\s\S]*?)(?:PRIMARY KEY|CONSTRAINT|ENGINE)"
+            table_pattern = r"CREATE TABLE IF NOT EXISTS `db_inventario`\.`(\w+)`\s*\(([\s\S]*?)(?:PRIMARY KEY|CONSTRAINT|ENGINE)"
             table_matches = re.findall(table_pattern, sql_content, re.DOTALL)
             
             for table_name, columns_text in table_matches:

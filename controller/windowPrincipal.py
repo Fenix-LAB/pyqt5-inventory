@@ -37,12 +37,13 @@ class Principal():
 
     def setInterfaceUsuario(self):
 
-        if self.usuario.getTipoUsuario() == 'ADM':
-            self.winPrincipal.twMenu.setTabEnabled(5, True)
-            self.winPrincipal.twMenu.setTabEnabled(6, True)
-        else:
-            self.winPrincipal.twMenu.setTabEnabled(5, False)
-            self.winPrincipal.twMenu.setTabEnabled(6, False)
+        # if self.usuario.getTipoUsuario() == 'ADM':
+        #     self.winPrincipal.twMenu.setTabEnabled(5, True)
+        #     self.winPrincipal.twMenu.setTabEnabled(6, True)
+        # else:
+        #     self.winPrincipal.twMenu.setTabEnabled(5, False)
+        #     self.winPrincipal.twMenu.setTabEnabled(6, False)
+        pass
 
 
     def notificationStock(self):
